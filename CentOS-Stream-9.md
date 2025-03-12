@@ -140,6 +140,79 @@ login mariadb
 ```
 sudo mariadb -u username -p
 ```
+create user
+```
+CREATE USER 'user_baru'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
+```
+create database
+```
+MariaDB [(none)]> CREATE DATABASE laranime;
+Query OK, 1 row affected (0.001 sec)
+```
+list database
+```
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db_laranime        |
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.001 sec)
+```
+select database
+```
+MariaDB [(none)]> USE laranime
+```
+create table
+```
+MariaDB [laranime]> CREATE TABLE list_husbu (
+    -> id INT PRIMARY KEY AUTO_INCREMENT,
+    -> name VARCHAR(255),
+    -> uid VARCHAR(20),
+    -> profesi VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.005 sec)
+```
+list table
+```
+MariaDB [laranime]> show tables;
++-------------------+
+| Tables_in_laranime |
++-------------------+
+| list_husbu         |
++-------------------+
+1 row in set (0.001 sec)
+```
+insert data
+```
+MariaDB [laranime]> INSERT INTO list_husbu (username, uid, role) VALUES
+    -> ('amuro', '00001', 'police'),
+    -> ('conan', '00002', 'detective');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+```
+dump data table
+```
+MariaDB [laranime]> SELECT * FROM list_users;
++----+----------+-------+-------------+
+| id | username | uid   | profesi     |
++----+----------+-------+-------------+
+|  1 | amuro    | 00001 | police      |
+|  2 | conan    | 00002 | detective   |
++----+----------+-------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [laranime]> SELECT * FROM laranime WHERE role = 'detective';
++----+----------+-------+-----------+
+| id | username | uid   | profesi   |
++----+----------+-------+-----------+
+|  2 | conan    | 00002 | detective |
++----+----------+-------+-----------+
+1 rows in set (0.001 sec)
+```
 
 ## PHPMyAdmin
 enable repo crb
