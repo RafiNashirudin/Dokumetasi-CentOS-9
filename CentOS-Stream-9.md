@@ -217,27 +217,27 @@ MariaDB [laranime]> SELECT * FROM laranime WHERE role = 'detective';
 ## Logical Backup & Restore
 Backup
 ```
-[kurokawa@kurokawa ~]$ mariadb-dump laranime > laranime.sql
+[kurokawa@kurokawa ~]$ sudo mariadb-dump laranime > laranime.sql
 ```
 Restore
 ```
-[kurokawa@kurokawa ~]$ mariadb-dump laranime < laranime.sql
+[kurokawa@kurokawa ~]$ sudo mariadb-dump laranime < laranime.sql
 ```
 
 ## Physical Backup & Restore
 Backup
 ```
-[root@instance ~]# mariabackup --backup \
+[kurokawa@kurokawa ~]$ sudo mariabackup --backup \
    --target-dir=/var/mariadb/backup/ \
    --user=root --password=asrul
 ```
 Restore
 ```
-[root@instance ~]# mariabackup --prepare \
+[kurokawa@kurokawa ~]$ sudo mariabackup --prepare \
    --target-dir=/var/mariadb/backup/
 ```
 ```
-[root@instance ~]# mariabackup --copy-back \
+[kurokawa@kurokawa ~]$ sudo mariabackup --copy-back \
    --target-dir=/var/mariadb/backup
 ```
    
