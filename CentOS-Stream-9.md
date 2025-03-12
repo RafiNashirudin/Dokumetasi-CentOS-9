@@ -236,6 +236,7 @@ Restore
 [root@instance ~]# mariabackup --prepare \
    --target-dir=/var/mariadb/backup/
 ```
+```
 [root@instance ~]# mariabackup --copy-back \
    --target-dir=/var/mariadb/backup
 ```
@@ -245,15 +246,18 @@ enable repo crb
 ```
 sudo dnf config-manager --set-enabled crb
 ```
+
 install repo epel
 ```
 sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
 ```
+
 install PHPMyAdmin
 ```
 dnf install -y phpmyadmin
 ```
+
 Add the "Require all granted" line under the "Require local" line
 ```
 Alias /phpMyAdmin /usr/share/phpMyAdmin
@@ -269,10 +273,12 @@ Alias /phpmyadmin /usr/share/phpMyAdmin
    Require local
 </Directory>
 ```
+
 restart httpd
 ```
 systemctl restart httpd
 ```
+
 login PHPMyAdmin
 ```
 http://localhost/phpmyadmin
@@ -283,6 +289,7 @@ menampilkan daftar port yang dikonfigurasi dalam SELinux
 ```
 sudo semanage port -l | grep ssh
 ```
+
 Menambah port 2222 ke kebijakan SELinux:
 ```
 sudo semanage port -a -t ssh_port_t -p tcp 2222
@@ -293,6 +300,7 @@ restart SSH
 ```
 sudo systemctl restart sshd
 ```
+
 uji coba login SSH
 ```
 ssh username@<IP Your SSH> -p <Port your SSH>
