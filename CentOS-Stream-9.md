@@ -68,7 +68,7 @@ sudo systemctl enable --now mariadb
 ```
 setup mariadb
 ```
-[kurokawa@kurokawa ~]# mariadb-secure-installation 
+[kurokawa@kurokawa ~]$ mariadb-secure-installation 
 
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
@@ -213,7 +213,33 @@ MariaDB [laranime]> SELECT * FROM laranime WHERE role = 'detective';
 +----+----------+-------+-----------+
 1 rows in set (0.001 sec)
 ```
+# Backup & Restore (ISSUE on Physical)
+## Logical Backup & Restore
+Backup
+```
+[kurokawa@kurokawa ~]$ mariadb-dump laranime > laranime.sql
+```
+Restore
+```
+[kurokawa@kurokawa ~]$ mariadb-dump laranime < laranime.sql
+```
 
+## Physical Backup & Restore
+Backup
+```
+[root@instance ~]# mariabackup --backup \
+   --target-dir=/var/mariadb/backup/ \
+   --user=root --password=asrul
+```
+Restore
+```
+[root@instance ~]# mariabackup --prepare \
+   --target-dir=/var/mariadb/backup/
+```
+[root@instance ~]# mariabackup --copy-back \
+   --target-dir=/var/mariadb/backup
+```
+   
 ## PHPMyAdmin
 enable repo crb
 ```
