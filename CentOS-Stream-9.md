@@ -256,13 +256,6 @@ dnf install -y phpmyadmin
 ```
 Add the "Require all granted" line under the "Require local" line
 ```
-# phpMyAdmin - Web based MySQL browser written in php
-#
-# Allows only localhost by default
-#
-# But allowing phpMyAdmin to anyone other than local>
-# dangerous unless properly secured by SSL
-
 Alias /phpMyAdmin /usr/share/phpMyAdmin
 Alias /phpmyadmin /usr/share/phpMyAdmin
 
