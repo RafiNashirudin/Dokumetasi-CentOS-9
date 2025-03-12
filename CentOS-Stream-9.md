@@ -229,7 +229,7 @@ Backup
 ```
 [kurokawa@kurokawa ~]$ sudo mariabackup --backup \
    --target-dir=/var/mariadb/backup/ \
-   --user=root --password=asrul
+   --user=root --password=akane
 ```
 Restore
 ```
